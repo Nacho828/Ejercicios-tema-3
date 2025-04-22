@@ -1,3 +1,9 @@
+import pygame
+import sys
+from Columna import Columna
+from Piedra import Piedra
+
+
 class Aplicacion:
     def __init__(self, ancho, alto):
         pygame.init()
