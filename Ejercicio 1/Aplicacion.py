@@ -1,6 +1,7 @@
 import pygame
+import sys
 from Columna import Columna
-from Piedra import Piedra  # Ensure Piedra.py exists in the same directory or is in the Python path
+from Piedra import Piedra
 
 
 class Aplicacion:
@@ -22,9 +23,30 @@ class Aplicacion:
         # Crear piedras y agregarlas a la primera columna
         colores = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255)]
         for i in range(5, 0, -1):
-            # Corregir el índice para acceder a los colores
             color = colores[(i - 1) % len(colores)]
             piedra = Piedra(i * 30, color)
             self.columnas[0].agregar_piedra(piedra)
 
         self.seleccionada = None
+
+    def ejecutar(self):
+        """Método principal para ejecutar el bucle del juego."""
+        corriendo = True
+        while corriendo:
+            for evento in pygame.event.get():
+                if evento.type == pygame.QUIT:
+                    corriendo = False
+
+            # Limpiar la pantalla
+            self.pantalla.fill((0, 0, 0))
+
+            # Dibujar columnas y piedras
+            for columna in self.columnas:
+                columna.dibujar(self.pantalla)
+
+            # Actualizar la pantalla
+            pygame.display.flip()
+            self.reloj.tick(60)
+
+        pygame.quit()
+        sys.exit()
