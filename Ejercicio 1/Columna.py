@@ -1,4 +1,4 @@
-from piedra import Piedra
+from Piedra import Piedra
 import pygame
 import sys
 
