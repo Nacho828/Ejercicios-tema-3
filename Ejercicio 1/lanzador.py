@@ -1,3 +1,8 @@
+from piedra import Piedra
+import pygame
+import sys
+
+
 class Lanzador:
     def __init__(self, pantalla, columnas, reloj):
         self.pantalla = pantalla
